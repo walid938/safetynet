@@ -5,15 +5,14 @@ import com.safetynets.alerts.exception.NoFirestationFound;
 import com.safetynets.alerts.model.Firestations;
 import com.safetynets.alerts.model.Person;
 import com.safetynets.alerts.model.*;
-import com.safetynets.alerts.repository.JsonDataAccess;
-import com.safetynets.alerts.service.FirestationsService;	
+import com.safetynets.alerts.repository.JsonDataAccess;	
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service
