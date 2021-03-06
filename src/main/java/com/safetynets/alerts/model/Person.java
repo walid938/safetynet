@@ -4,26 +4,30 @@ package com.safetynets.alerts.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.safetynets.alerts.util.View;
+
 public class Person {
 
-   
+	@JsonView(View.FirstName.class)
     private String firstName;
 
-    
+	@JsonView(View.LastName.class)
     private String lastName;
 
-    
+	@JsonView(View.Address.class)
     private String address;
-
-   
+	
+	@JsonView(View.Address.class)
     private String city;
 
-    
+	@JsonView(View.Address.class)
     private String zip;
 
-    
+	@JsonView(View.Phone.class)
     private String phone;
 
+	@JsonView(View.Email.class)
     private String email;
 
     public Person(String firstName, String lastName, String address, String city, String zip, String phone, String email) {

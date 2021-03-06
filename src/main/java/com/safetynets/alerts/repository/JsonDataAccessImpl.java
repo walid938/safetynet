@@ -43,7 +43,7 @@ public class JsonDataAccessImpl implements JsonDataAccess {
             return jsondata;
         }
         try {
-            jsondata = objectMapper.readValue(new File("jsondata.json"), JsonData.class);
+            jsondata = objectMapper.readValue(new File("src/main/resources/jsondata.json"), JsonData.class);
             logger.debug("Json correctly mapped!");
         } catch (IOException e) {
             logger.error("Error while JSON mapping!");
