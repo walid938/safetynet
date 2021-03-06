@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,8 +23,7 @@ public class FirestationsServiceImpl implements FirestationsService {
     @Autowired
     private JsonDataAccess jsondataAccess;
 
-    
-
+   
 	
 	public FirestationsArea getFirestationArea(int firestationNumber) {
         List<Person> personList = jsondataAccess.getPersonsByFirestationNumber(firestationNumber);
@@ -38,6 +37,27 @@ public class FirestationsServiceImpl implements FirestationsService {
         throw new NoFirestationFound(List.of(firestationNumber));
     }
 
+
+	
+	@Override
+	    public List<String> getPhoneAlert(int firestationNumber) {
+	        List<String> phoneList = new ArrayList<>();
+
+	        for (Person person : jsondataAccess.getPersons()) {
+	            if (jsondataAccess.getNbStationByAddressFromPerson(person) == firestationNumber) {
+	            	phoneList.add(person.getPhone());
+	            }
+	        }
+	        if (CollectionUtils.isNotEmpty(phoneList)) {
+	            log.info("Request get phone alert successful!");
+	            return phoneList;
+	        }
+	        log.info("Request get phone alert failed.");
+	        throw new NoFirestationFound(List.of(firestationNumber));
+	    }
+	
+	
+	
   
     public Firestations saveFirestation(Firestations model) {
         Firestations result = jsondataAccess.saveFirestation(model);
