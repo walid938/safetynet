@@ -26,4 +26,16 @@ public interface JsonDataAccess {
     Firestations saveFirestation(Firestations model);
 
     boolean deleteFirestation(Firestations model);
+
+	Person savePerson(Person model);
+
+	Person updatePerson(Person model);
+
+	boolean deletePerson(Person model);
+
+	MedicalRecords saveMedicalRecords(MedicalRecords model);
+
+	MedicalRecords updateMedicalRecords(MedicalRecords model);
+
+	boolean deleteMedicalRecords(MedicalRecords model);
 }

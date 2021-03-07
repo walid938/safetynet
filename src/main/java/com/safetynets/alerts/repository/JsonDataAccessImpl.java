@@ -158,4 +158,108 @@ public class JsonDataAccessImpl implements JsonDataAccess {
         }
         return false;
     }
+    
+    @Override
+    public Person savePerson(Person model) {
+        if (model != null) {
+            boolean i;
+            if (loadJsonData().getPersons() != null) {
+                i = loadJsonData().getPersons().stream().noneMatch(person -> person.equals(model));
+                if (i) {
+                	loadJsonData().getPersons().add(model);
+                    return model;
+                }
+            } else {
+                List<Person> personList = new ArrayList<>();
+                personList.add(model);
+                loadJsonData().setPersons(personList);
+                return model;
+
+            }
+        }
+        return null;
+    }
+
+
+	@Override
+    public Person updatePerson(Person model) {
+        if (model != null) {
+            if (loadJsonData().getPersons() != null) {
+                Optional<Person> personOptionalToUpdate = loadJsonData().getPersons().stream().filter(person -> model.getFirstName().equals(person.getFirstName()) &&
+                        model.getLastName().equals(person.getLastName())).findFirst();
+                if (personOptionalToUpdate.isPresent()) {
+                	loadJsonData().getPersons().set(loadJsonData().getPersons().indexOf(personOptionalToUpdate.get()), model);
+                    return model;
+                }
+            } else loadJsonData().setPersons(new ArrayList<>());
+        }
+        return null;
+    }
+
+
+	@Override
+    public boolean deletePerson(Person model) {
+        if (model != null) {
+            if (loadJsonData().getPersons() != null) {
+                Optional<Person> personOptionalTodelete = loadJsonData().getPersons().stream().filter(person -> model.getFirstName().equals(person.getFirstName()) &&
+                        model.getLastName().equals(person.getLastName())).findFirst();
+                if (personOptionalTodelete.isPresent()) {
+                	loadJsonData().getPersons().remove(personOptionalTodelete.get());
+                    return true;
+                }
+            } else loadJsonData().setPersons(new ArrayList<>());
+        }
+        return false;
+    }
+
+	@Override
+    public MedicalRecords saveMedicalRecords(MedicalRecords model) {
+        if (model != null) {
+            boolean i;
+            if (loadJsonData().getMedicalrecords() != null) {
+                i = loadJsonData().getMedicalrecords().stream().noneMatch(medicalRecords -> medicalRecords.equals(model));
+                if (i) {
+                	loadJsonData().getMedicalrecords().add(model);
+                    return model;
+                }
+            } else {
+                List<MedicalRecords> medicalRecordsList = new ArrayList<>();
+                medicalRecordsList.add(model);
+                loadJsonData().setMedicalrecords(medicalRecordsList);
+                return model;
+            }
+        }
+        return null;
+    }
+
+	@Override
+    public MedicalRecords updateMedicalRecords(MedicalRecords model) {
+        if (model != null) {
+            if (loadJsonData().getMedicalrecords() != null) {
+                Optional<MedicalRecords> medicalRecordsOptionalToUpdate = loadJsonData().getMedicalrecords().stream().filter(medicalRecords -> model.getFirstName().equals(medicalRecords.getFirstName()) &&
+                        model.getLastName().equals(medicalRecords.getLastName())).findFirst();
+                if (medicalRecordsOptionalToUpdate.isPresent()) {
+                	loadJsonData().getMedicalrecords().set(loadJsonData().getMedicalrecords().indexOf(medicalRecordsOptionalToUpdate.get()), model);
+                    return model;
+                }
+            } else loadJsonData().setMedicalrecords(new ArrayList<>());
+        }
+        return null;
+    }
+
+	
+	@Override
+    public boolean deleteMedicalRecords(MedicalRecords model) {
+        if (model != null) {
+            if (loadJsonData().getMedicalrecords() != null) {
+                Optional<MedicalRecords> medicalRecordsOptionalToUpdate = loadJsonData().getMedicalrecords().stream().filter(medicalRecords -> model.getFirstName().equals(medicalRecords.getFirstName()) &&
+                        model.getLastName().equals(medicalRecords.getLastName())).findFirst();
+                if (medicalRecordsOptionalToUpdate.isPresent()) {
+                	loadJsonData().getMedicalrecords().remove(medicalRecordsOptionalToUpdate.get());
+                    return true;
+                }
+            } else loadJsonData().setMedicalrecords(new ArrayList<>());
+        }
+        return false;
+    }
 }

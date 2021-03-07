@@ -1,7 +1,6 @@
 package com.safetynets.alerts.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.safetynets.alerts.model.Person;
 import com.safetynets.alerts.util.View;
 
 import java.util.List;

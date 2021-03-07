@@ -57,4 +57,11 @@ public class View {
     public interface ChildInfo extends InfoFirstName, InfoLastName, InfoAge {
     }
 
+    public interface Fire extends InfoFirstName, InfoLastName, InfoPhone, InfoAge, InfoMedications, InfoAllergies {
+    }
+    
+    public interface FloodStations extends InfoFirstName, InfoLastName, InfoPhone, InfoAge, InfoMedications, InfoAllergies {
+    }
+    public interface PersonInfo extends InfoFirstName, InfoLastName, InfoAddress, InfoCity, InfoZip, InfoEmail, InfoAge, InfoMedications, InfoAllergies {
+    }
 }

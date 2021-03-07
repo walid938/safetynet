@@ -1,6 +1,6 @@
 package com.safetynets.alerts.model;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class JsonData {
